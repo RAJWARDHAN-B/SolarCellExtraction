@@ -145,7 +145,3 @@ This project is part of research work at IIT Mandi focused on solar cell analysi
 ## License
 
 This project is for research purposes at IIT Mandi.
-
-## Contact
-
-For questions or contributions, please contact the research team at IIT Mandi.
