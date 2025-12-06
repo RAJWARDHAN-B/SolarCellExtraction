@@ -19,7 +19,8 @@ SolarCellExtraction/
 └── fullModules/              # Full module processing and cell extraction
     ├── fullmodulev1.ipynb    # Hough line detection approach
     ├── fullmodulev2.ipynb    # Morphological operations with peak detection
-    └── fullmodulev3.ipynb    # Advanced grid detection with clustering
+    ├── fullmodulev3.ipynb    # Advanced grid detection with clustering
+    └── fullmodulev4.ipynb    # Batch processing pipeline (recommended for multiple images)
 ```
 
 ## Features
@@ -60,6 +61,15 @@ Processes complete solar module images with various approaches:
    - Combined morphological and Hough-based approaches
    - Automatic cell extraction from detected grid
 
+4. **Batch Processing Pipeline** (`fullmodulev4.ipynb`) ⭐ **Recommended**
+   - Combines best techniques from previous versions
+   - Processes multiple module images from a folder
+   - Automatic dark border cropping
+   - Hough line detection + morphological operations
+   - Peak detection with DBSCAN clustering
+   - Organized output: each module's cells saved in separate folders
+   - Works perfectly for batch processing multiple images
+
 ## Requirements
 
 The project uses the following Python libraries:
@@ -96,6 +106,18 @@ For processing cropped module images:
 
 For processing complete solar module images:
 
+**Recommended: Batch Processing** (`fullmodulev4.ipynb`)
+
+1. Open `fullModules/fullmodulev4.ipynb`
+2. Update the module folder path:
+   ```python
+   module_folder = r"path/to/your/module/images"
+   ```
+3. Run all cells to process all images in the folder
+4. Extracted cells will be saved in `extracted_cells/` with subfolders for each module
+
+**Single Image Processing:**
+
 1. Choose the appropriate notebook based on your module characteristics:
    - `fullmodulev1.ipynb` - Best for modules with clear grid lines
    - `fullmodulev2.ipynb` - Best for modules with varying lighting
@@ -124,9 +146,11 @@ For processing complete solar module images:
 
 ## Output
 
-- Extracted cells are saved as 256×256 pixel images
+- Extracted cells are saved as images (size varies based on notebook)
+- **Batch processing** (`fullmodulev4.ipynb`): Cells organized in folders, one per module image
 - Original image metadata is preserved in filenames
 - Failed extractions are logged with appropriate error messages
+- Progress information displayed during batch processing
 
 ## Notes
 
