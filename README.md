@@ -70,22 +70,89 @@ Processes complete solar module images with various approaches:
    - Organized output: each module's cells saved in separate folders
    - Works perfectly for batch processing multiple images
 
+## Setup
+
+### Prerequisites
+
+- Python 3.7 or higher
+- Conda (recommended) or pip
+
+### Environment Setup
+
+#### Option 1: Using Conda (Recommended)
+
+1. **Create a new conda environment:**
+   ```bash
+   conda create -n cleanenv python=3.9
+   conda activate cleanenv
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   conda install -c conda-forge opencv numpy matplotlib scikit-image scikit-learn scipy tqdm
+   ```
+   
+   Or using pip within the conda environment:
+   ```bash
+   pip install opencv-python numpy matplotlib scikit-image scikit-learn scipy tqdm
+   ```
+
+3. **Install Jupyter kernel for the environment:**
+   ```bash
+   conda install ipykernel
+   python -m ipykernel install --user --name cleanenv --display-name "Python (cleanenv)"
+   ```
+
+4. **Verify setup:**
+   - Open Jupyter Notebook
+   - Select the kernel: **Kernel → Change Kernel → Python (cleanenv)**
+
+#### Option 2: Using pip and virtualenv
+
+1. **Create a virtual environment:**
+   ```bash
+   python -m venv cleanenv
+   # On Windows:
+   cleanenv\Scripts\activate
+   # On Linux/Mac:
+   source cleanenv/bin/activate
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install opencv-python numpy matplotlib scikit-image scikit-learn scipy tqdm ipykernel
+   ```
+
+3. **Install Jupyter kernel:**
+   ```bash
+   python -m ipykernel install --user --name cleanenv --display-name "Python (cleanenv)"
+   ```
+
 ## Requirements
 
-The project uses the following Python libraries:
+The project uses the following Python libraries with recommended versions:
 
-- `opencv-python` (cv2) - Image processing and computer vision
-- `numpy` - Numerical operations
-- `matplotlib` - Visualization
-- `scikit-image` - Additional image processing utilities
-- `scikit-learn` - Clustering algorithms (DBSCAN)
-- `scipy` - Signal processing (peak detection)
-- `tqdm` - Progress bars for batch processing
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `opencv-python` | ≥4.5.0 | Image processing and computer vision |
+| `numpy` | ≥1.19.0 | Numerical operations |
+| `matplotlib` | ≥3.3.0 | Visualization |
+| `scikit-image` | ≥0.18.0 | Additional image processing utilities |
+| `scikit-learn` | ≥0.24.0 | Clustering algorithms (DBSCAN) |
+| `scipy` | ≥1.6.0 | Signal processing (peak detection) |
+| `tqdm` | ≥4.60.0 | Progress bars for batch processing |
+| `ipykernel` | ≥6.0.0 | Jupyter kernel support |
 
-Install dependencies:
+**Install all dependencies at once:**
 
 ```bash
-pip install opencv-python numpy matplotlib scikit-image scikit-learn scipy tqdm
+pip install opencv-python>=4.5.0 numpy>=1.19.0 matplotlib>=3.3.0 scikit-image>=0.18.0 scikit-learn>=0.24.0 scipy>=1.6.0 tqdm>=4.60.0 ipykernel>=6.0.0
+```
+
+**Or using conda:**
+
+```bash
+conda install -c conda-forge opencv numpy matplotlib scikit-image scikit-learn scipy tqdm ipykernel
 ```
 
 ## Usage
