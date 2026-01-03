@@ -14,6 +14,7 @@ SolarCellExtraction/
 │   ├── preprocessing1.ipynb  # Initial preprocessing experiments
 │   ├── preprocessing2.ipynb  # Advanced preprocessing with morphological operations
 │   ├── preprocessing3.ipynb  # Alternative extraction method using contour detection
+│   ├── preprocessing10.ipynb  # Single cell extraction from white background images
 │   └── cell_extract_pipeline.ipynb  # Complete pipeline for batch processing
 │
 └── fullModules/              # Full module processing and cell extraction
@@ -42,6 +43,14 @@ The cell extraction pipeline processes images of solar modules to extract indivi
 3. **Cell Extraction**
    - Perspective transformation to normalize cell orientation
    - Output: 256×256 pixel normalized cell images
+
+**Single Cell Processing** (`preprocessing10.ipynb`)
+- Designed for images of single solar cells with white backgrounds
+- OTSU thresholding to separate cell from background
+- Morphological operations for noise removal
+- Contour detection to identify cell boundaries
+- Perspective transformation for rectification
+- Ideal for images like `BMRK_00106_cell0286.png` (single cell on white background)
 
 ### Full Module Processing (`fullModules/`)
 
@@ -159,7 +168,7 @@ conda install -c conda-forge opencv numpy matplotlib scikit-image scikit-learn s
 
 ### Individual Cell Extraction
 
-For processing cropped module images:
+**For processing cropped module images:**
 
 1. Open `cellExtract/cell_extract_pipeline.ipynb`
 2. Update the input and output directory paths:
@@ -168,6 +177,16 @@ For processing cropped module images:
    output_dir = "path/to/output/directory"
    ```
 3. Run all cells to process the entire dataset
+
+**For single cell images with white backgrounds:**
+
+1. Open `cellExtract/preprocessing10.ipynb`
+2. Update the image path:
+   ```python
+   image = cv2.imread("path/to/your/cell_image.png", cv2.IMREAD_GRAYSCALE)
+   ```
+3. Run all cells to extract and rectify the cell
+4. This notebook works best for images like `BMRK_00106_cell0286.png` where a single cell is on a white background
 
 ### Full Module Processing
 
